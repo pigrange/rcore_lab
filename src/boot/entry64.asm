@@ -1,5 +1,5 @@
 .section .text.entry //在text段一定一个.entry
-.global _start
+.globl _start
 
 _start:
     la sp,bootstacktop
@@ -7,11 +7,11 @@ _start:
 
     .section .bss.stack
     .align 12
-    .global bootstack
+    .globl bootstack
 
 //分配16KB的启动栈
 bootstack:
     .space 4096 * 4
-    .global bootstacktop
+    .globl bootstacktop
 
 bootstacktop:

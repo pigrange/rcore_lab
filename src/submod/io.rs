@@ -1,4 +1,4 @@
-use crate::libary::sbi;
+use super::sbi;
 use core::fmt::{ self, Write };
 
 pub fn putchar(ch: char) {
@@ -27,7 +27,7 @@ pub fn _print(args: fmt::Arguments) {
 #[macro_export]
 macro_rules! print {
     ($($arg:tt)*) => ({
-        $crate::libary::io::_print(format_args!($($arg)*));
+        $crate::submod::io::_print(format_args!($($arg)*));
     });
 }
 

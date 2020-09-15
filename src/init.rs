@@ -1,10 +1,12 @@
 global_asm!(include_str!("boot/entry64.asm"));
 
-use crate::libary::{io,sbi};
+use crate::trap::interrupt;
+use crate::trap::timer;
 
 #[no_mangle]
 pub extern "C" fn rust_main() -> ! {
-    crate::libary::interrupt::init();
+    interrupt::init();
+    timer::init();
     unsafe{
         llvm_asm!(
             "ebreak"
